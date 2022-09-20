@@ -14,6 +14,14 @@ class Student:
             self.email = self.name.lower() + self.surname.lower() + "2@gmail.com"
         Student.students.append(dict({"fullname": self.fullname, "email": self.email}))
 
+    def assign_grade(self, fullname):
+        self.subject = input("Enter the name of the subject: ")
+        self.grade = int(input("Enter grade: "))
+        for student in Student.students:
+            if student["fullname"] == fullname:
+                student[self.subject] = self.grade
+                print("The student was graded!")
+
 
 print("Welcome to Student Management System!")
 print("""You can choose one of these functions:
@@ -25,7 +33,7 @@ Add and view announcement
 Delete student""")
 
 command = ""
-while command == "Log out":
+while command != "Log out":
     command = input("Enter your command: ").lower()
     if command == "add student":
         std = Student()
@@ -52,6 +60,15 @@ while command == "Log out":
                 break
         else:
             print("This student does not exist in the system.")
+
+    elif command == "assign grade":
+        graded_student = input("Student's fullname: ")
+        for student in Student.students:
+            if graded_student == student["fullname"]:
+                std.assign_grade(graded_student)
+                break
+        else:
+                print("This student does not exist in the system!")
 
     
 
