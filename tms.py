@@ -22,6 +22,15 @@ class Student:
                 student[self.subject] = self.grade
                 print("The student was graded!")
 
+    def search_student(self, email):
+        for student in Student.students:
+            if student["email"] == email:
+                for k, v in student.items():
+                    print(k.capitalize() + ": ", v)
+                break
+        else:
+            print("We don't have this student.")
+
 
 print("Welcome to Student Management System!")
 print("""You can choose one of these functions:
@@ -69,6 +78,13 @@ while command != "Log out":
                 break
         else:
                 print("This student does not exist in the system!")
+
+    elif command == "search student":
+        if Student.students:
+            wanted_student = input("Enter the student's email: ")
+            std.search_student(wanted_student)
+        else:
+            print("There are no students in system")
 
     
 
