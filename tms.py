@@ -43,6 +43,16 @@ while command == "Log out":
         else:
             print("There are no students in system")
 
+    elif command == "delete student":
+        deleted_student = input("Student's fullname: ")
+        for student in Student.students:
+            if deleted_student == student["fullname"]:
+                Student.students.remove(student)
+                print("Student was deleted successfully!")
+                break
+        else:
+            print("This student does not exist in the system.")
+
     
 
     
