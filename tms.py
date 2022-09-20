@@ -31,6 +31,10 @@ class Student:
         else:
             print("We don't have this student.")
 
+    def add_announcement(self, announcement):
+        self.announcement = announcement
+        Student.announcements.append(self.announcement)
+
 
 print("Welcome to Student Management System!")
 print("""You can choose one of these functions:
@@ -84,7 +88,23 @@ while command != "Log out":
             wanted_student = input("Enter the student's email: ")
             std.search_student(wanted_student)
         else:
-            print("There are no students in system")
+            print("There are no students in system!")
+        
+    elif command == "add announcement":
+        announcement = input("Please, add your announcement: ")
+        std = Student()
+        std.add_announcement(announcement)
+
+    elif command == "view announcements":
+        if Student.announcements:
+            for announcement in Student.announcements:
+                print(announcement)
+        else:
+            print("There are no announcements in system!")
+
+    elif command == "log out":
+        print("You exited!")
+        break
 
     
 
