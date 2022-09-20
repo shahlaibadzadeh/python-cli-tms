@@ -36,6 +36,13 @@ while command == "Log out":
         else:
             print("Students were added successfully!")
 
+    elif command == "list students":
+        if Student.students:
+            for student in Student.students:
+                print("Student's fullname: " + student["fullname"])
+        else:
+            print("There are no students in system")
+
     
 
     
